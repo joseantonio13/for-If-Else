@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Contador automático </title>
+</head>
+<style>
+
+body{
+    background-color: rgb(17, 128, 128);
+    font: normal 13pt arial;
+}
+
+header{
+
+ color: white;
+ text-align: center;
+}
+
+section{
+ background-color: white;
+ border-radius: 8px;
+ padding: 15px;
+ width: 520px;
+ margin: auto;
+ box-shadow: 5px 6px 10px rgba(0, 0, 0, 0.364);
+ font: normal 18pt arial;
+ box-sizing: content-box;
+
+}
+
+footer{
+
+ color: white;
+ text-align: center;
+ font-style: italic;
+}
+
+div{
+    text-align: center;
+    padding:6px;
+}
+
+</style>
+
+
+<body>
+
+<header>
+
+    <h1> Contador </h1>
+
+
+</header>
+
+
+<section>
+
+<div id="dados">
+
+<p> Digite um número para começar:  </p>
+
+<input id="com" type="number" placeholder="Digite o começo">
+<br>
+
+<input id="fim" type="number" placeholder="Digite o final desse passo">
+
+<br>
+<input type="number" name="passo" id="txtp" placeholder="Pula quantos?">
+<br>
+<input type="button" value="Resolver" onclick="resolver()">
+
+</div>
+
+<div >
+
+<div id="res"> Preparando o resultado... </div>
+
+</div>
+
+
+</section>
+
+
+<footer>
+
+    <p> Rodapé </p>
+
+</footer>
+
+<script>
+
+
+function resolver(){
+var res = window.document.getElementById("res");
+var com = window.document.getElementById("com");
+var fim = window.document.getElementById("fim");
+var txtp = window.document.getElementById("txtp");
+
+    if (com.value.length == 0 || fim.value.length == 0 || txtp.value.length == 0){
+        window.alert("[erro]Faltam dados")
+        res.innerHTML = ("Impossível contar")
+    } else {
+        res.innerHTML = `Contando:.`
+        let i = Number(com.value);
+        let f = Number(fim.value);
+        var p = Number(txtp.value);
+
+        if ( p <= 0 ){
+            window.alert("Passo Inválido, estou considerando 1")
+            p = 1;
+        }
+
+           //contagem progressiva
+        if( i < f ){
+            for(var c = i; c <= f; c += p){
+            res.innerHTML += `${c} \u{1F449} `
+        }
+        res.innerHTML += `\u{1F3C1}`
+        //contagem regresiva
+    } else {
+        for(let c = i; c >= f; c -= p){
+            res.innerHTML += `${c} \u{1F449} `
+        }
+        res.innerHTML += `\u{1F3C1}`
+     }
+    
+
+    }
+
+}
+
+</script>
+
+
+
+
+</body>
+
